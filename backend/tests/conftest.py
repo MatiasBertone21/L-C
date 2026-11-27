@@ -34,7 +34,16 @@ async def client(
 
     async with app.router.lifespan_context(app):
         db = get_database()
-        await db["users"].delete_many({})
+        for coll_name in (
+            "users",
+            "products",
+            "stock_movements",
+            "supplier_imports",
+            "supplier_catalog_items",
+            "price_change_history",
+            "supplier_import_locks",
+        ):
+            await db[coll_name].delete_many({})
 
         user_repo = UserRepository(db)
         await user_repo.create(
@@ -56,4 +65,13 @@ async def client(
         async with AsyncClient(transport=transport, base_url="http://test") as async_client:
             yield async_client
 
-        await db["users"].delete_many({})
+        for coll_name in (
+            "users",
+            "products",
+            "stock_movements",
+            "supplier_imports",
+            "supplier_catalog_items",
+            "price_change_history",
+            "supplier_import_locks",
+        ):
+            await db[coll_name].delete_many({})

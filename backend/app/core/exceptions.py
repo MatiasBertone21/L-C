@@ -42,9 +42,29 @@ class DuplicateResourceError(AppException):
         super().__init__(message=message, status_code=409, code="duplicate_resource")
 
 
+class InsufficientStockError(AppException):
+    def __init__(self, message: str = "Stock insuficiente para realizar la operación") -> None:
+        super().__init__(message=message, status_code=409, code="insufficient_stock")
+
+
 class DomainValidationError(AppException):
     def __init__(self, message: str = "Datos de solicitud inválidos") -> None:
         super().__init__(message=message, status_code=400, code="validation_error")
+
+
+class UnprocessableEntityError(AppException):
+    def __init__(self, message: str = "El archivo o contenido no pudo ser procesado") -> None:
+        super().__init__(message=message, status_code=422, code="unprocessable_entity")
+
+
+class PayloadTooLargeError(AppException):
+    def __init__(self, message: str = "El archivo supera el tamaño máximo permitido") -> None:
+        super().__init__(message=message, status_code=413, code="payload_too_large")
+
+
+class UnsupportedMediaTypeError(AppException):
+    def __init__(self, message: str = "Formato de archivo no soportado") -> None:
+        super().__init__(message=message, status_code=415, code="unsupported_media_type")
 
 
 class ServiceUnavailableError(AppException):

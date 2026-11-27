@@ -12,3 +12,12 @@ __pycache__/
 .coverage
 htmlcov/
 *.log
+*.csv
+*.tsv
+*.xls
+*.xlsx
+*.xlsm
+*.xlsb
+*.ods
+data/
+import-tmp/

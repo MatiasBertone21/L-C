@@ -132,3 +132,9 @@ class UserRepository:
         if not doc:
             return None
         return self._to_user_response(doc)
+
+    async def find_emails_by_ids(self, ids: list[ObjectId]) -> dict[ObjectId, str]:
+        if not ids:
+            return {}
+        cursor = self.collection.find({"_id": {"$in": ids}}, {"email": 1})
+        return {doc["_id"]: doc["email"] async for doc in cursor}

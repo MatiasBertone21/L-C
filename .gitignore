@@ -12,10 +12,16 @@
 docs/
 *.xls
 *.xlsx
+*.xlsm
+*.xlsb
+*.ods
 *.csv
+*.tsv
 *.dump
 *.bson
 *.archive
+backend/data/
+**/import-tmp/
 
 # =============================================================================
 # Backend (Python / FastAPI)
@@ -42,6 +48,7 @@ dist/
 build/
 **/build/
 .svelte-kit/
+**/.vite/
 
 # =============================================================================
 # Logs y archivos de sistema operativo
